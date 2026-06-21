@@ -65,7 +65,7 @@ p { margin: 0; }
 .metric strong { display: block; margin-top: var(--space-1); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 28px; line-height: 1.1; }
 section { margin-top: var(--space-12); }
 .grid-two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-5); }
-.grid-two > *, .original-grid > *, .comparison-grid > *, .source-grid > * { min-width: 0; }
+.grid-two > *, .original-grid > *, .comparison-grid > *, .source-grid > *, .m1o1nn-layout > *, .m1o1nn-media-column > *, .m1o1nn-content-column > * { min-width: 0; }
 .panel, .pattern-card, .source-card, .comparison-card, .script-card, .profile-card, .reference-only-card { background: var(--surface-secondary); border: 1px solid var(--border-default); padding: var(--space-6); }
 .pattern-card { transition: transform 150ms ease-out, border-color 150ms ease-out; }
 .pattern-card:hover, .comparison-card:hover { transform: translateY(-2px); border-color: var(--accent-primary); }
@@ -103,6 +103,10 @@ tr:hover td { background: var(--surface-secondary); }
 .identity-photo { display: block; width: min(var(--media-identity-width), 100%); height: auto; max-height: var(--media-identity-max-height); object-fit: contain; border: 1px solid var(--border-default); background: var(--surface-elevated); flex: 0 0 auto; }
 .identity-photo-inline { width: var(--media-inline-width); max-height: var(--media-inline-max-height); }
 .original-grid { display: grid; grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+.m1o1nn-layout { display: grid; grid-template-columns: minmax(260px, 0.36fr) minmax(0, 1fr); gap: var(--space-5); align-items: start; }
+.m1o1nn-media-column, .m1o1nn-content-column { display: grid; gap: var(--space-5); align-content: start; }
+#m1o1nn-pending .table-wrap table { min-width: 100%; }
+#m1o1nn-pending .table-wrap th, #m1o1nn-pending .table-wrap td { padding: var(--space-3) var(--space-2); }
 .profile-card { display: grid; gap: var(--space-4); justify-items: start; }
 .profile-photo { display: block; width: min(var(--media-profile-width), 100%); height: auto; max-height: var(--media-profile-max-height); object-fit: contain; border: 1px solid var(--border-default); background: var(--surface-elevated); }
 .profile-photo-wide { width: min(var(--media-wide-width), 100%); max-height: var(--media-wide-max-height); }
@@ -140,7 +144,7 @@ tr:hover td { background: var(--surface-secondary); }
 .callout { border: 1px solid var(--accent-primary); background: var(--surface-secondary); padding: var(--space-6); }
 .footer { margin-top: var(--space-12); color: var(--text-tertiary); font-size: 13px; }
 @media (max-width: 860px) {
-  .hero, .grid-two, .formula, .source-grid, .comparison-grid, .original-grid, .reference-only-card { grid-template-columns: 1fr; }
+  .hero, .grid-two, .formula, .source-grid, .comparison-grid, .original-grid, .m1o1nn-layout, .reference-only-card { grid-template-columns: 1fr; }
   .transcript-summary { grid-template-columns: 1fr; }
   .hero { padding: var(--space-6); }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -780,37 +784,38 @@ VS
     <section id="m1o1nn-pending">
       <h2>m1o1nn.0 감성 서사 레퍼런스 자리</h2>
       <p class="section-kicker">동현님이 새로 추출한 6개 대본을 반영했습니다. 이 계정은 Whisper 전문만 보면 놓치는 부분이 있어 캡션, 화면 자막, 흔들리는 영상 질감을 같이 봐야 합니다.</p>
-      <div class="original-grid">
-        <aside class="profile-card">
-          <img class="profile-photo" src="../assets/reference/m1o1nn_0_profile.png" width="878" height="1088" alt="m1o1nn.0 레퍼런스 구분용 얼굴 스크린샷">
-          <div>
-            <span class="status-pill status-pill-ready">STT 대본 생성 완료</span>
-            <h3>m1o1nn.0</h3>
-            <p><a href="https://www.instagram.com/m1o1nn.0/" target="_blank" rel="noreferrer">https://www.instagram.com/m1o1nn.0/</a></p>
-            <p>두 번째 첨부 사진 기준으로 얼굴 식별용 이미지를 붙였습니다. 말투는 감성 독백, 야간 이동, 흰 자막, 소설 문장형 긴장감 쪽으로 분류합니다.</p>
-          </div>
-        </aside>
-        <div class="panel">
-          <h3>추출 완료 상태</h3>
-          <p class="transcript-ready">성공 6개 / 실패 0개. 이제 아래 표에서 각 릴스와 대본 전문 아카이브를 1:1로 열 수 있습니다.</p>
-          <pre class="command-box">cd /Users/dddhhh5137/03_SNS_개인
-릴스 m1o1nn.0 m1o1nn_0_top6.txt</pre>
-          <p>재추출이 필요할 때만 위 명령을 다시 쓰면 됩니다. 현재 전문 파일은 <code>01_레퍼런스/m1o1nn.0/</code>에 모두 들어왔습니다.</p>
+      <div class="m1o1nn-layout">
+        <div class="m1o1nn-media-column">
+          <aside class="profile-card">
+            <img class="profile-photo" src="../assets/reference/m1o1nn_0_profile.png" width="878" height="1088" alt="m1o1nn.0 레퍼런스 구분용 얼굴 스크린샷">
+            <div>
+              <span class="status-pill status-pill-ready">STT 대본 생성 완료</span>
+              <h3>m1o1nn.0</h3>
+              <p><a href="https://www.instagram.com/m1o1nn.0/" target="_blank" rel="noreferrer">https://www.instagram.com/m1o1nn.0/</a></p>
+              <p>두 번째 첨부 사진 기준으로 얼굴 식별용 이미지를 붙였습니다. 말투는 감성 독백, 야간 이동, 흰 자막, 소설 문장형 긴장감 쪽으로 분류합니다.</p>
+            </div>
+          </aside>
+          <aside class="profile-card">
+            <img class="profile-photo profile-photo-wide" src="../assets/reference/m1o1nn_0_reel_sample.png" width="950" height="1522" alt="m1o1nn.0 지하철 야간 감성 자막 릴스 화면 예시">
+            <div>
+              <span class="status-pill">화면 톤 예시</span>
+              <h3>야간 서사형 흰 자막</h3>
+              <p>흔들리는 이동 화면 위에 문학적인 자막을 얹어 불안, 기다림, 관계의 긴장을 만드는 쪽입니다.</p>
+            </div>
+          </aside>
         </div>
-      </div>
-      <div class="original-grid">
-        <aside class="profile-card">
-          <img class="profile-photo profile-photo-wide" src="../assets/reference/m1o1nn_0_reel_sample.png" width="950" height="1522" alt="m1o1nn.0 지하철 야간 감성 자막 릴스 화면 예시">
-          <div>
-            <span class="status-pill">화면 톤 예시</span>
-            <h3>야간 서사형 흰 자막</h3>
-            <p>흔들리는 이동 화면 위에 문학적인 자막을 얹어 불안, 기다림, 관계의 긴장을 만드는 쪽입니다.</p>
+        <div class="m1o1nn-content-column">
+          <div class="panel">
+            <h3>추출 완료 상태</h3>
+            <p class="transcript-ready">성공 6개 / 실패 0개. 이제 아래 표에서 각 릴스와 대본 전문 아카이브를 1:1로 열 수 있습니다.</p>
+            <pre class="command-box">cd /Users/dddhhh5137/03_SNS_개인
+릴스 m1o1nn.0 m1o1nn_0_top6.txt</pre>
+            <p>재추출이 필요할 때만 위 명령을 다시 쓰면 됩니다. 현재 전문 파일은 <code>01_레퍼런스/m1o1nn.0/</code>에 모두 들어왔습니다.</p>
           </div>
-        </aside>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>#</th><th>릴스</th><th>조회수</th><th>좋아요</th><th>댓글</th><th>전문</th></tr></thead>
-            <tbody>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>릴스</th><th>조회수</th><th>좋아요</th><th>댓글</th><th>전문</th></tr></thead>
+              <tbody>
               <tr>
                 <td class="num">1</td>
                 <td><a href="https://www.instagram.com/m1o1nn.0/reel/DXjMJVTEfoD/" target="_blank" rel="noreferrer">DXjMJVTEfoD</a></td>
@@ -859,8 +864,9 @@ VS
                 <td>167</td>
                 <td><a href="#transcript-m1o1nn-DSaLoAYiZWq">전문 보기</a></td>
               </tr>
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <div class="grid-two">
