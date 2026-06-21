@@ -102,12 +102,20 @@ tr:hover td { background: var(--surface-secondary); }
 .creator-label { display: inline-flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); }
 .identity-photo { display: block; width: min(var(--media-identity-width), 100%); height: auto; max-height: var(--media-identity-max-height); object-fit: contain; border: 1px solid var(--border-default); background: var(--surface-elevated); flex: 0 0 auto; }
 .identity-photo-inline { width: var(--media-inline-width); max-height: var(--media-inline-max-height); }
-.original-grid { display: grid; grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr); gap: var(--space-5); align-items: start; }
-.m1o1nn-layout { display: grid; grid-template-columns: minmax(260px, 0.36fr) minmax(0, 1fr); gap: var(--space-5); align-items: start; }
-.m1o1nn-media-column, .m1o1nn-content-column { display: grid; gap: var(--space-5); align-content: start; }
+.original-grid { display: grid; grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr); gap: var(--space-5); align-items: stretch; }
+.original-grid > .panel, .original-grid > .profile-card { min-height: 100%; }
+.m1o1nn-layout { display: grid; grid-template-columns: minmax(260px, 0.36fr) minmax(0, 1fr); gap: var(--space-5); align-items: stretch; }
+.m1o1nn-media-column, .m1o1nn-content-column { display: grid; gap: var(--space-5); align-content: stretch; height: 100%; }
+.m1o1nn-content-column { grid-template-rows: auto minmax(0, 1fr); }
+.m1o1nn-content-column .table-wrap { min-height: 100%; }
 #m1o1nn-pending .table-wrap table { min-width: 100%; }
 #m1o1nn-pending .table-wrap th, #m1o1nn-pending .table-wrap td { padding: var(--space-3) var(--space-2); }
-.profile-card { display: grid; gap: var(--space-4); justify-items: start; }
+.profile-card { display: grid; gap: var(--space-4); justify-items: start; align-content: start; }
+.media-frame { display: grid; place-items: center; justify-self: center; width: min(var(--media-profile-width), 100%); aspect-ratio: 1 / 1; overflow: hidden; border: 1px solid var(--border-default); background: var(--surface-elevated); }
+.media-frame-wide { width: min(var(--media-wide-width), 100%); aspect-ratio: 4 / 3; }
+.media-frame-strip { width: min(var(--media-wide-width), 100%); aspect-ratio: 504 / 118; }
+.media-frame-tall { width: min(var(--media-wide-width), 100%); aspect-ratio: 9 / 12; }
+.media-frame > .profile-photo { width: 100%; height: 100%; max-height: none; border: 0; background: transparent; object-fit: contain; }
 .profile-photo { display: block; width: min(var(--media-profile-width), 100%); height: auto; max-height: var(--media-profile-max-height); object-fit: contain; border: 1px solid var(--border-default); background: var(--surface-elevated); }
 .profile-photo-wide { width: min(var(--media-wide-width), 100%); max-height: var(--media-wide-max-height); }
 .reference-only-card { display: grid; grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr); gap: var(--space-5); align-items: start; }
@@ -145,6 +153,8 @@ tr:hover td { background: var(--surface-secondary); }
 .footer { margin-top: var(--space-12); color: var(--text-tertiary); font-size: 13px; }
 @media (max-width: 860px) {
   .hero, .grid-two, .formula, .source-grid, .comparison-grid, .original-grid, .m1o1nn-layout, .reference-only-card { grid-template-columns: 1fr; }
+  .original-grid { align-items: start; }
+  .original-grid > .panel, .original-grid > .profile-card, .m1o1nn-content-column .table-wrap { min-height: auto; }
   .transcript-summary { grid-template-columns: 1fr; }
   .hero { padding: var(--space-6); }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -241,7 +251,9 @@ tr:hover td { background: var(--surface-secondary); }
       <p class="section-kicker">동현님이 추가한 유튜튜 장문은 릴스 STT가 아니라 X 글 기반 레퍼런스입니다. 핵심은 AI 딸깍 환상을 깨고, 알고리즘 이해와 브랜딩, 좁은 팬층 결집, 제목/썸네일 선설계를 강조하는 교육형 글쓰기입니다.</p>
       <div class="original-grid">
         <aside class="profile-card">
-          <img class="profile-photo profile-photo-wide" src="../assets/reference/yoututu_profile.png" width="504" height="118" alt="유튜튜 youtu_03 X 계정 구분용 프로필 스크린샷">
+          <div class="media-frame media-frame-strip">
+            <img class="profile-photo" src="../assets/reference/yoututu_profile.png" width="504" height="118" alt="유튜튜 youtu_03 X 계정 구분용 프로필 스크린샷">
+          </div>
           <div>
             <span class="status-pill status-pill-ready">X 장문 원문 반영</span>
             <h3>유튜튜 / @youtu_03</h3>
@@ -787,7 +799,9 @@ VS
       <div class="m1o1nn-layout">
         <div class="m1o1nn-media-column">
           <aside class="profile-card">
-            <img class="profile-photo" src="../assets/reference/m1o1nn_0_profile.png" width="878" height="1088" alt="m1o1nn.0 레퍼런스 구분용 얼굴 스크린샷">
+            <div class="media-frame">
+              <img class="profile-photo" src="../assets/reference/m1o1nn_0_profile.png" width="878" height="1088" alt="m1o1nn.0 레퍼런스 구분용 얼굴 스크린샷">
+            </div>
             <div>
               <span class="status-pill status-pill-ready">STT 대본 생성 완료</span>
               <h3>m1o1nn.0</h3>
@@ -796,7 +810,9 @@ VS
             </div>
           </aside>
           <aside class="profile-card">
-            <img class="profile-photo profile-photo-wide" src="../assets/reference/m1o1nn_0_reel_sample.png" width="950" height="1522" alt="m1o1nn.0 지하철 야간 감성 자막 릴스 화면 예시">
+            <div class="media-frame media-frame-tall">
+              <img class="profile-photo" src="../assets/reference/m1o1nn_0_reel_sample.png" width="950" height="1522" alt="m1o1nn.0 지하철 야간 감성 자막 릴스 화면 예시">
+            </div>
             <div>
               <span class="status-pill">화면 톤 예시</span>
               <h3>야간 서사형 흰 자막</h3>
@@ -969,7 +985,9 @@ VS
       <p class="section-kicker">민선홍 파트도 STT가 완료되어 사진, 링크, 조회수, 전문 대본을 한 화면에서 연결했습니다. 아래 원본 링크에서 바로 전문 카드로 이동할 수 있습니다.</p>
       <div class="original-grid">
         <aside class="profile-card">
-          <img class="profile-photo" src="../assets/reference/minsunhooong_profile.png" width="938" height="986" alt="minsunhooong 민선홍 레퍼런스 구분용 얼굴 스크린샷">
+          <div class="media-frame">
+            <img class="profile-photo" src="../assets/reference/minsunhooong_profile.png" width="938" height="986" alt="minsunhooong 민선홍 레퍼런스 구분용 얼굴 스크린샷">
+          </div>
           <div>
             <span class="status-pill status-pill-ready">STT 대본 생성 완료</span>
             <h3>민선홍 / minsunhooong</h3>
@@ -1005,7 +1023,9 @@ VS
       <p class="section-kicker">이 계정은 대본 내용만큼이나 자막 크기, 과장된 문장, 빠른 상황 전환이 웃음을 만드는 레퍼런스입니다. 현재 분석은 STT 전문과 동현님이 보낸 대표 이미지 기준의 1차 정리이며, 영상 프레임 단위 편집 분석은 이후에 더 깊게 볼 수 있습니다.</p>
       <div class="original-grid">
         <aside class="profile-card">
-          <img class="profile-photo profile-photo-wide" src="../assets/reference/luck2monkey_profile.png" width="1900" height="1440" alt="luck2monkey 편집 레퍼런스 구분용 비교 스크린샷">
+          <div class="media-frame media-frame-wide">
+            <img class="profile-photo" src="../assets/reference/luck2monkey_profile.png" width="1900" height="1440" alt="luck2monkey 편집 레퍼런스 구분용 비교 스크린샷">
+          </div>
           <div>
             <span class="status-pill status-pill-ready">STT 대본 생성 완료</span>
             <h3>luck2monkey / 털복숭</h3>
@@ -1101,7 +1121,9 @@ VS
       <h2>voix.neutre 참고 계정</h2>
       <p class="section-kicker">동현님이 웃긴 사람 레퍼런스로 따로 표시한 계정입니다. 지금은 요청대로 이미지와 링크만 보관하고, 대본 추출 대상에는 넣지 않았습니다.</p>
       <div class="reference-only-card">
-        <img class="profile-photo profile-photo-wide" src="../assets/reference/voix_neutre_profile.png" width="904" height="912" alt="voix.neutre 참고 계정 구분용 스크린샷">
+        <div class="media-frame">
+          <img class="profile-photo" src="../assets/reference/voix_neutre_profile.png" width="904" height="912" alt="voix.neutre 참고 계정 구분용 스크린샷">
+        </div>
         <div>
           <span class="status-pill">이미지와 링크만 보관</span>
           <h3>voix.neutre</h3>
@@ -1116,7 +1138,9 @@ VS
       <p class="section-kicker">현재 로컬 기준으로 김차록은 72개 전문이 추출되어 있습니다. top22는 22개 통합 패턴 보고서가 있고, 추가 50개는 전문은 있으나 개별 패턴 태깅을 이어서 해야 합니다.</p>
       <div class="original-grid">
         <aside class="profile-card">
-          <img class="profile-photo" src="../assets/reference/charocked_profile.png" width="646" height="686" alt="김차록 charocked_ 레퍼런스 구분용 얼굴 스크린샷">
+          <div class="media-frame">
+            <img class="profile-photo" src="../assets/reference/charocked_profile.png" width="646" height="686" alt="김차록 charocked_ 레퍼런스 구분용 얼굴 스크린샷">
+          </div>
           <div>
             <span class="status-pill status-pill-ready">STT 대본 생성 완료</span>
             <h3>김차록 / charocked_</h3>
