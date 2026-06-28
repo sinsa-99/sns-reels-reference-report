@@ -135,6 +135,9 @@ tr:hover td { background: var(--surface-secondary); }
 .solfa-shot img { display: block; width: 100%; height: auto; border: 1px solid var(--border-subtle); background: var(--surface-elevated); }
 .solfa-shot figcaption { color: var(--text-secondary); font-size: 14px; line-height: 1.55; word-break: keep-all; }
 .solfa-shot figcaption strong { display: block; color: var(--text-primary); margin-bottom: var(--space-1); }
+.solfa-resource-link { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-4); padding-right: calc(var(--space-4) + var(--space-16)); border: 1px solid var(--border-default); background: var(--surface-secondary); }
+.solfa-resource-link p { margin: 0; color: var(--text-secondary); word-break: keep-all; }
+.solfa-resource-link a { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--accent-primary); background: var(--surface-elevated); color: var(--accent-primary); padding: var(--space-2) var(--space-3); font-size: 13px; font-weight: 700; text-decoration: none; }
 .solfa-raw-note .transcript-body { max-height: 620px; }
 .reference-only-card { display: grid; grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr); gap: var(--space-5); align-items: start; }
 .reference-only-card p { color: var(--text-secondary); word-break: keep-all; }
@@ -213,6 +216,7 @@ tr:hover td { background: var(--surface-secondary); }
   .report-shell { width: min(100% - 24px, 1180px); padding-top: var(--space-8); }
   .metrics { grid-template-columns: 1fr; }
   .panel, .pattern-card, .source-card, .callout, .profile-card, .solfa-shot { padding: var(--space-4); }
+  .solfa-resource-link { padding-right: var(--space-4); }
   .back-to-top { position: static; width: fit-content; margin-top: var(--space-8); box-shadow: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -244,6 +248,10 @@ tr:hover td { background: var(--surface-secondary); }
     <section id="solfa-lecture" class="solfa-brief">
       <h2>탈잉 솔파 강의 노트 6/25</h2>
       <p class="section-kicker">동현님이 들은 솔파 강의 PDF 흐름을 먼저 살리고, 현재 들어온 캡처 41장을 글 사이사이에 순서대로 배치했습니다. 누락된 사진이 더 오면 같은 타임라인 안에 이어 넣으면 됩니다.</p>
+      <div class="solfa-resource-link">
+        <p><strong>원본 PDF</strong><br>솔파 강의 내 생각 6_25.pdf를 새 탭에서 바로 열 수 있게 연결했습니다.</p>
+        <a href="../assets/reference/solfa/solfa_lecture_notes_2026-06-25.pdf" target="_blank" rel="noopener">원본 PDF 열기</a>
+      </div>
 
       <div class="grid-two">
         <article class="panel">
