@@ -1,6 +1,6 @@
 # SNS Reels Reference Report
 
-Private snapshot of the local report generated from `/Users/dddhhh5137/03_SNS_개인`.
+Private snapshot of the local SNS reference report.
 
 - Main report: `reports/dot_pd_report.html`
 - Images: `assets/reference/`
